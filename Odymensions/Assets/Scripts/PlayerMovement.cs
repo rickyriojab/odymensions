@@ -6,15 +6,19 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    bool isLeft = false;
-    bool isRight = false;
-    bool isJump = false;
-    bool canJump = true;
+    [SerializeField] private bool isLeft = false;
+    [SerializeField] private bool isRight = false;
+    private bool isJump = false;
+    private bool canJump = true;
 
     public Rigidbody2D rigidBody2D;
     public float speedForce;
     public float jumpForce;
     public float waitJump = 2.0f;
+
+    public Animator animator;
+
+    public SpriteRenderer spriteRenderer;
 
     public void clickLeft()
     {
@@ -46,12 +50,25 @@ public class PlayerMovement : MonoBehaviour
         if (isLeft)
         {
             rigidBody2D.AddForce(new Vector2(-speedForce, 0) * Time.deltaTime);
+            spriteRenderer.flipX = true;
         }
 
         if (isRight)
         {
             rigidBody2D.AddForce(new Vector2(speedForce, 0) * Time.deltaTime);
+            spriteRenderer.flipX = false;
         }
+
+        if (isLeft || isRight) 
+        {
+            animator.SetBool("isRunning", true);
+        }
+        else
+        {
+            animator.SetBool("isRunning", false);
+
+        }
+
         if (isJump & canJump)
         {
             isJump = false;

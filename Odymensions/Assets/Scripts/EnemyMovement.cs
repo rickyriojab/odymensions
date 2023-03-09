@@ -6,18 +6,20 @@ public class EnemyMovement : MonoBehaviour
 {
 
     public float speed;
-    private float timer;
+    [SerializeField] private float timer;
     public float time = 2f;
     private bool isRight = true;
     public Transform player;
     private bool needToAttack = false;
     private float distance; // distancia del enemigo al jugador
     private float absDistance;
+    public SpriteRenderer spriteRenderer;
 
 
     void Start()
     {
         timer = time;
+        spriteRenderer.flipX = true;
     }
 
     void Update()
@@ -26,7 +28,7 @@ public class EnemyMovement : MonoBehaviour
         distance = player.position.x - transform.position.x;
         absDistance = Mathf.Abs(distance);
 
-        if (absDistance < 10)
+        if (absDistance < 13)
         {
             needToAttack = true;
         }
@@ -60,20 +62,20 @@ public class EnemyMovement : MonoBehaviour
         if (isRight == true)
         {
             transform.position += Vector3.right * speed * Time.deltaTime;
-            transform.localScale = new Vector3(1, 1, 1);
+            spriteRenderer.flipX = false;
         }
 
         if (isRight == false)
         {
             transform.position += Vector3.left * speed * Time.deltaTime;
-            transform.localScale = new Vector3(-1, 1, 1);
+            spriteRenderer.flipX = true;
         }
     }
 
     private void Attack()
     {
         transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-        if(distance > 0) transform.localScale = new Vector3(1, 1, 1);
-        if(distance < 0) transform.localScale = new Vector3(-1, 1, 1);
+        if (distance > 0) spriteRenderer.flipX = false;
+        if (distance < 0) spriteRenderer.flipX = true;
     }
 }

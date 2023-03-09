@@ -27,6 +27,8 @@ public class ParallaxEffect : MonoBehaviour
         transform.Translate(new Vector3(x, 0, 0));
         previousCameraPosition = cameraTransform.position;
 
+
+        /* Para cuando se corte el juego
         // Si la camara esta mas adelante que el sprite, se reposiciona la capa
         if(moveAmount > startPosition + spriteWidth)
         {
@@ -38,5 +40,6 @@ public class ParallaxEffect : MonoBehaviour
             transform.Translate(new Vector3(-spriteWidth, 0, 0));
             startPosition -= spriteWidth;
         }
+        */
     }
 }
