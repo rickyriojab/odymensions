@@ -62,20 +62,20 @@ public class EnemyMovement : MonoBehaviour
         if (isRight == true)
         {
             transform.position += Vector3.right * speed * Time.deltaTime;
-            spriteRenderer.flipX = false;
+            spriteRenderer.flipX = true;
         }
 
         if (isRight == false)
         {
             transform.position += Vector3.left * speed * Time.deltaTime;
-            spriteRenderer.flipX = true;
+            spriteRenderer.flipX = false;
         }
     }
 
     private void Attack()
     {
         transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-        if (distance > 0) spriteRenderer.flipX = false;
-        if (distance < 0) spriteRenderer.flipX = true;
+        if (distance > 0) spriteRenderer.flipX = true;
+        if (distance < 0) spriteRenderer.flipX = false;
     }
 }
