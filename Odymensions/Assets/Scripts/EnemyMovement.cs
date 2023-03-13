@@ -46,8 +46,6 @@ public class EnemyMovement : MonoBehaviour
             Idle();
         }
 
-        
-
         timer -= Time.deltaTime;
 
         if(timer <= 0)
