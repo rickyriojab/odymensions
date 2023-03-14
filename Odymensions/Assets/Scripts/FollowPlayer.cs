@@ -9,7 +9,14 @@ public class FollowPlayer : MonoBehaviour
 
     private void Update()
     {
-        // La camara seguira al jugador en x mientra que se mantendra en 0 en y,z (jugador, 0, 0), si se quiere el personaje mas a la izquierda de la pantalla sumar a la X
-        transform.position = new Vector3(playerTransform.position.x + 2, transform.position.y, transform.position.z);
+        if(playerTransform.position.x >= -3.5)
+        {
+            // La camara seguira al jugador en x mientra que se mantendra en 0 en y,z (jugador, 0, 0), si se quiere el personaje mas a la izquierda de la pantalla sumar a la X
+            transform.position = new Vector3(playerTransform.position.x + 2, transform.position.y, transform.position.z);
+        }
+        else
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        }
     }
 }
