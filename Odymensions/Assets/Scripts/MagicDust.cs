@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MagicDust : MonoBehaviour
 {
+
+    public int value = 1;
+    public GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +19,13 @@ public class MagicDust : MonoBehaviour
         
     }
 
-    private void OntriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
+            gameManager.AddPoints(value);
             Destroy(this.gameObject);
         }
     }
 }
+
