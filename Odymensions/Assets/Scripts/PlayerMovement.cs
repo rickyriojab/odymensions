@@ -20,27 +20,27 @@ public class PlayerMovement : MonoBehaviour
 
     public SpriteRenderer spriteRenderer;
 
-    public void clickLeft()
+    public void ClickLeft()
     {
         isLeft = true;
     }
 
-    public void releaseLeft()
+    public void ReleaseLeft()
     {
         isLeft = false;
     }
 
-    public void clickRight()
+    public void ClickRight()
     {
         isRight = true;
     }
 
-    public void releaseRight()
+    public void ReleaseRight()
     {
         isRight = false;
     }
 
-    public void clickJump()
+    public void ClickJump()
     {
         isJump = true;
     }
@@ -75,11 +75,11 @@ public class PlayerMovement : MonoBehaviour
             //fuerza en vector (x,y)
             rigidBody2D.AddForce(new Vector2(0, jumpForce));
             canJump = false;
-            Invoke("waitToJump", waitJump);
+            Invoke("WaitToJump", waitJump);
         }
     }
 
-    private void waitToJump()
+    private void WaitToJump()
     {
         canJump = true;
     }

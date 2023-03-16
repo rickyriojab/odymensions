@@ -76,4 +76,11 @@ public class EnemyMovement : MonoBehaviour
         if (distance > 0) spriteRenderer.flipX = true;
         if (distance < 0) spriteRenderer.flipX = false;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player")) {
+            GameManager.Instance.RemoveLife();
+        }
+    }
 }

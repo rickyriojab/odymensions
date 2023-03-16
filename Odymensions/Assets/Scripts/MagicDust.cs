@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class MagicDust : MonoBehaviour
 {
-
     public int value = 1;
-    public GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +21,7 @@ public class MagicDust : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            gameManager.AddPoints(value);
+            GameManager.Instance.AddPoints(value);
             Destroy(this.gameObject);
         }
     }
