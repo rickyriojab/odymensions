@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public HUDScript hud;
 
     //vidas
-    private int lifes = 3;
+    private int tries = 3;
 
 
     private void Awake()
@@ -34,10 +34,20 @@ public class GameManager : MonoBehaviour
         hud.UpdatePoints(totalPoints);
     }
 
-    public void RemoveLife()
+    public void RemoveTry()
     {
-        lifes -= 1;
-        if (lifes == 0) SceneManager.LoadScene(0);
-        hud.HideLife(lifes);
+        tries -= 1;
+        if (tries == 0) SceneManager.LoadScene(0);
+        hud.HideTry(tries);
+    }
+
+    public void AddTry()
+    {
+        tries += 1;
+        if (tries < 3)
+        {
+            hud.ShowTry(tries);
+        }
+        
     }
 }

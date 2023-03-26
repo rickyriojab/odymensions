@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Unity.VisualScripting;
 
 public class Timer : MonoBehaviour
@@ -9,6 +10,7 @@ public class Timer : MonoBehaviour
     public float maxTime;
     private float actTime;
     private bool isTimeAwake = false;
+    [SerializeField] private Slider slider;
 
     // Start is called before the first frame update
     void Start()
@@ -28,8 +30,13 @@ public class Timer : MonoBehaviour
 
     public void UpdateTimer()
     {
-        Debug.Log(actTime);
+        //Debug.Log(actTime);
         actTime -= Time.deltaTime;
+
+        if (actTime >= 0)
+        {
+            slider.value = actTime;
+        }
 
         if (actTime <= 0)
         {
@@ -47,6 +54,7 @@ public class Timer : MonoBehaviour
     public void AwakeTimer()
     {
         actTime = maxTime;
+        slider.maxValue = maxTime;
         ChangeTimer(true);
     }
     public void KillTimer()
@@ -62,7 +70,7 @@ public class Timer : MonoBehaviour
         }
         else if (GameManager.Instance.TotalPoints < 4)
         {
-            GameManager.Instance.RemoveLife();
+            GameManager.Instance.RemoveTry();
         }
     }
 }

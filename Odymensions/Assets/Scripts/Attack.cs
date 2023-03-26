@@ -7,6 +7,8 @@ public class Attack : MonoBehaviour
     [SerializeField] private Transform punchOrigin;
     [SerializeField] private float punchRadius;
     [SerializeField] private float punchDamage;
+    [SerializeField] private float punchTime;
+    private float punchCooldown = 0f;
     private bool isPunching = false;
     public Animator animator;
 
@@ -18,10 +20,14 @@ public class Attack : MonoBehaviour
 
     private void Update()
     {
-        if (isPunching)
+        if(punchCooldown > 0) punchCooldown -= Time.deltaTime;
+
+        if (isPunching && punchCooldown <= 0)
         {
             isPunching = false;
             Punch();
+
+            punchCooldown = punchTime;
         }
     }
 

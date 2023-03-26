@@ -6,20 +6,20 @@ using UnityEngine;
 public class HUDScript : MonoBehaviour
 {
     public TextMeshProUGUI points;
-    public GameObject[] lifes;
+    public GameObject[] tries;
 
     public void UpdatePoints(int totalPoints)
     {
         points.text = GameManager.Instance.TotalPoints.ToString();
     }
 
-    public void HideLife(int i)
+    public void HideTry(int i)
     {
-        lifes[i].SetActive(false);
+        tries[i].SetActive(false);
     }
 
-    public void ShowLife(int i)
+    public void ShowTry(int i)
     {
-        lifes[i].SetActive(true);
+        tries[i].SetActive(true);
     }
 }
