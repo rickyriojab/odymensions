@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public int TotalPoints { get { return totalPoints; } }
     private int totalPoints;
     public HUDScript hud;
+    
 
     //vidas
     private int tries = 3;

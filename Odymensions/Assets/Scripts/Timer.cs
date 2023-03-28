@@ -19,7 +19,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AwakeTimer();
+        CR_PointsChallenge();
     }
 
     // Update is called once per frame
@@ -80,7 +80,8 @@ public class Timer : MonoBehaviour
 
     public IEnumerator CR_PointsChallenge()
     {
-        instructions.text = GameManager.Instance.TotalPoints.ToString();
-        yield return new WaitForSeconds(3.0f);
+        HUDScript.Instance.ShowInstructions(instructions);
+        yield return new WaitForSeconds(1.0f);
+        AwakeTimer();
     }
 }

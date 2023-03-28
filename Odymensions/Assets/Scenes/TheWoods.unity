@@ -625,6 +625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: {fileID: 1999600389}
+  instructionsText: {fileID: 0}
   tries: []
 --- !u!1 &293019287
 GameObject:
@@ -732,6 +733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: {fileID: 1999600389}
+  instructionsText: {fileID: 0}
   tries: []
 --- !u!1 &321454418
 GameObject:
@@ -1055,7 +1057,7 @@ GameObject:
   - component: {fileID: 613938112}
   - component: {fileID: 613938111}
   m_Layer: 5
-  m_Name: Instructions
+  m_Name: InstructionsPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1078,7 +1080,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -332.4, y: 174.3}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &613938111
@@ -1101,7 +1103,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: Recoge 4 monedas
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1128,8 +1130,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 42.25
+  m_fontSizeBase: 42.25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -1164,7 +1166,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 41.84173, w: 13.947243}
+  m_margin: {x: -142.12505, y: 0, z: -177.61365, w: 0.31710052}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1627,6 +1629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: {fileID: 1999600389}
+  instructionsText: {fileID: 613938111}
   tries:
   - {fileID: 1333129510}
   - {fileID: 225798462}
@@ -2675,6 +2678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: {fileID: 1999600389}
+  instructionsText: {fileID: 0}
   tries: []
 --- !u!1 &1347562277
 GameObject:
@@ -2831,6 +2835,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTime: 5
   slider: {fileID: 1361559093}
+  instructions: {fileID: 613938111}
 --- !u!114 &1361559093
 MonoBehaviour:
   m_ObjectHideFlags: 0
