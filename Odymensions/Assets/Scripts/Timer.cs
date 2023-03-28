@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using Unity.VisualScripting;
+using System;
 
 public class Timer : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class Timer : MonoBehaviour
     private float actTime;
     private bool isTimeAwake = false;
     [SerializeField] private Slider slider;
+    //texto
+    public TextMeshProUGUI instructions;
 
     // Start is called before the first frame update
     void Start()
@@ -72,5 +76,11 @@ public class Timer : MonoBehaviour
         {
             GameManager.Instance.RemoveTry();
         }
+    }
+
+    public IEnumerator CR_PointsChallenge()
+    {
+        instructions.text = GameManager.Instance.TotalPoints.ToString();
+        yield return new WaitForSeconds(3.0f);
     }
 }
