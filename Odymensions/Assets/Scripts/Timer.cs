@@ -14,22 +14,25 @@ public class Timer : MonoBehaviour
     private bool isTimeAwake = false;
     [SerializeField] private Slider slider;
     //texto
-    public TextMeshProUGUI instructions;
+    public string instructions;
+    string text;
+    public HUDScript hud;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        CR_PointsChallenge();
+        hud.EmptyInstructions();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (isTimeAwake)
         {
             UpdateTimer();
         }
-        
+        else
+        {
+            actTime = maxTime;
+        }
     }
 
     public void UpdateTimer()
@@ -68,6 +71,7 @@ public class Timer : MonoBehaviour
 
     public void PointsChallenge()
     {
+        
         if (GameManager.Instance.TotalPoints >= 4)
         {
             return;
@@ -78,10 +82,14 @@ public class Timer : MonoBehaviour
         }
     }
 
-    public IEnumerator CR_PointsChallenge()
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        HUDScript.Instance.ShowInstructions(instructions);
-        yield return new WaitForSeconds(1.0f);
-        AwakeTimer();
+        if (collision.CompareTag("Player"))
+        {
+            hud.ShowInstructions(instructions);
+            GetComponent<BoxCollider2D>().enabled = false;
+        }
     }
 }

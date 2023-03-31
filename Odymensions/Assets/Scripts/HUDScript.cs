@@ -5,26 +5,15 @@ using UnityEngine;
 
 public class HUDScript : MonoBehaviour
 {
-    public static HUDScript Instance { get; private set; }
+    public GameObject[] tries;
     public TextMeshProUGUI points;
     public TextMeshProUGUI instructionsText;
-    public GameObject[] tries;
-
-    private void Start()
-    {
-    }
 
     public void UpdatePoints(int totalPoints)
     {
         points.text = GameManager.Instance.TotalPoints.ToString();
     }
 
-    public IEnumerator ShowInstructions(TextMeshProUGUI instructions)
-    {
-        instructionsText.gameObject.SetActive(true);
-        yield return new WaitForSeconds(3);
-        instructionsText.gameObject.SetActive(false);
-    }
 
     public void HideTry(int i)
     {
@@ -34,6 +23,25 @@ public class HUDScript : MonoBehaviour
     public void ShowTry(int i)
     {
         tries[i].SetActive(true);
+    }
+
+    public void EmptyInstructions()
+    { 
+        instructionsText.text = string.Empty;
+    }
+
+    public void ShowInstructions(string instructions)
+    {
+        StartCoroutine(CR_ShowInstructions(instructions));
+    }
+
+    public IEnumerator CR_ShowInstructions(string instructions)
+    {
+        instructionsText.text = instructions;
+        yield return new WaitForSeconds(3.0f);
+        instructionsText.text = string.Empty;
+        yield return new WaitForSeconds(1.0f);
+        GameManager.Instance.AwakeTime();
     }
 
 }

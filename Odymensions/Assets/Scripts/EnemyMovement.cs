@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
@@ -14,6 +15,7 @@ public class EnemyMovement : MonoBehaviour
     private float distance; // distancia del enemigo al jugador
     private float absDistance;
     public SpriteRenderer spriteRenderer;
+    public Animator animator;
 
 
     void Start()
@@ -24,7 +26,6 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-
         distance = player.position.x - transform.position.x;
         absDistance = Mathf.Abs(distance);
 
@@ -57,6 +58,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void Idle()
     {
+        animator.SetBool("isRunning", true);
+
         if (isRight == true)
         {
             transform.position += Vector3.right * speed * Time.deltaTime;
